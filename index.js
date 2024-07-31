@@ -8,16 +8,15 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "https://tic-tac-toe-pink-nine.vercel.app",
+        origin: "*",
         methods: ["GET", "POST"],
     },
 });
 
+
 require('./online/online')(io);
 
-app.use(cors({
-    origin: "https://tic-tac-toe-pink-nine.vercel.app",
-}));
+app.use(cors());
 app.use(express.json());
 app.use('/', routes);
 
